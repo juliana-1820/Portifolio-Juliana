@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Juliana</title>
+    <script>
+        function getSaudacao() {
+          var saudacao;
+          var horaAtual = new Date().getHours();
+    
+          if (horaAtual >= 6 && horaAtual < 12) {
+            saudacao = "Olá, bom dia!";
+          } else if (horaAtual >= 12 && horaAtual < 18) {
+            saudacao = "Olá, boa tarde!";
+          } else {
+            saudacao = "Olá, boa noite!";
+          }
+    
+          return saudacao;
+        }
+    
+        function atualizarSaudacao() {
+          var elementoH1 = document.getElementById("saudacao");
+          elementoH1.textContent = getSaudacao();
+        }
+    
+        window.onload = function() {
+          atualizarSaudacao();
+    
+          const links = document.querySelectorAll('header nav a, header .btn-contato a');
+    
+          links.forEach(link => {
+              link.addEventListener('click', function(event) {
+                  event.preventDefault(); 
+    
+                  const targetId = this.getAttribute('href'); 
+    
+                  const targetPosition = document.querySelector(targetId).offsetTop;
+    
+                  window.scrollTo({
+                      top: targetPosition,
+                      behavior: 'smooth'
+                  });
+              });
+          });
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <div class="interface">
+            <div class="logo">
+                <i class="fa-solid fa-j"></i>
+            </div>
+            <nav class="cabeçalho-link">
+                <ul>
+                    <li><a href="#inicio"> Início</a></li>
+                    <li><a href="#sobre"> Sobre</a></li>
+                </ul>
+            </nav>
+            <div class="btn-contato">
+                <a href="#contato">
+                    <button>Contato</button>
+                </a>
+            </div>      
+        </div>
+    </header>
+    <main>
+        <section id="inicio" class="inicio"> <!-- Adicionei o ID "inicio" -->
+            <div class="interface">
+                <div class="flex">
+                    <div class="topo-site">
+                        <div class="container-text">
+                            <div class="text">
+                                <h1 id="saudacao">...</h1>    
+                                <h3>Me chamo <span>Juliana.</span></h3>  
+                                <p>Sou estudante do curso de Tecnologia em 
+                                    <br>Análise e Desenvolvimento de Sistemas</p>
+                                    <div class="redes-sociais">
+                                        <a href="https://github.com/juliana-1820" target="_blank">
+                                            <i class="fa-brands fa-github"></i>
+                                        </a>
+                                        <a href="https://www.linkedin.com/in/juliana-silva201422" target="_blank">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </a>
+                                    </div>
+                                </p>                     
+                            </div>
+                        </div> 
+                        <div class="img-topo">
+                            <img src="images/computador.gif" alt="">
+                        </div>   
+                    </div>
+                </div>
+            </section>
+
+        <section id="sobre" class="sobre"> <!-- Adicionei o ID "sobre" -->
+            <div class="interface">    
+                <div class="flex">
+                    <div class="img-sobre">
+                        <img src="images/eu2.jpeg" width="261" height="466">
+                    </div>        
+                    <div class="txt-sobre">
+                        <div class="texto-sobre">
+                            <h2>Muito prazer, <span>sou Juliana Silva.</span></h2>
+                            <p>Tenho 28 anos e atualmente estou cursando o 4º semestre de 
+                                <br>TADS (Tecnologia em Análise e Desenvolvimento de Sistemas).
+                            <p>Também sou bacharel em História pela Universidade de
+                                <br>Brasília.
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contato"> <!-- Adicionei o ID "contato" -->
+            <div class="interface">
+                <div class="flex">
+                    <h2>Contatos:</h2>
+                    <div class="contato-item">
+                        <a href="mailto:ju.silva1820@gmail.com" target="_blank">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span> 
+                        </a>
+                    </div>
+                    <div class="contato-item">                      
+                        <a href="https://wa.me//5561993358696?text=Olá%20!" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                    <div class="img-contato">
+                        <img src="images/computador 2.gif" alt="Imagem de contato">
+                    </div>
+
+                   
+                </div>    
+            </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
